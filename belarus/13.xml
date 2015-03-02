@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- for xml compliance -->
+<krpano version="1.0.8.14">
+    <!-- actions to perform while loading -->
+    <events onloadcomplete="onloadcompleteaction();"/>
+    <action name="onloadcompleteaction">
+		if(plugin[data].soundOn==false,stoppanosounds(),playpanosounds());
+	</action>
+    <action name="playpanosounds">
+		playbackgroundsound(%BASEDIR%/1data/sounds/sound0.mp3,0,%1);
+	</action>
+    <action name="stoppanosounds">
+		stopbackgroundsound();
+	</action>
+    <action name="closepanoobjects">
+	</action>
+    <!--************** Панорама *******************************************************************-->
+    <!-- @File="13.xml" @PanoName="[Group 0]-IMG_6117_IMG_6133-17 images" @FilePath="F:/работа/2014 Беларусь панорамы/пано4/[Group 0]-IMG_6117_IMG_6133-17 images.jpg" -->
+    <panoview h="0" v="0" fov="90"/>
+    <!-- view parameters -->
+    <view fisheye="0" limitview="range" hlookatmin="-180" hlookatmax="180" vlookatmin="-89.995" vlookatmax="77.275" fovmin="1" fovmax="90" fov="90" hlookat="0" vlookat="0"/>
+    <autorotate horizon="0" tofov="90" waittime="1" speed="5"/>
+    <!-- preview image -->
+    <preview url="1data/13/preview.jpg"/>
+    <!-- the pano itself -->
+    <image type="SPHERE" hfov="360" vfov="167.27" voffset="-6.36" multires="true" tilesize="1000" baseindex="0">
+        <level tiledimagewidth="16000" tiledimageheight="8000">
+            <sphere url="1data/13/3/%v_%u.jpg"/>
+        </level>
+        <level tiledimagewidth="8000" tiledimageheight="4000">
+            <sphere url="1data/13/2/%v_%u.jpg"/>
+        </level>
+        <level tiledimagewidth="4000" tiledimageheight="2000">
+            <sphere url="1data/13/1/%v_%u.jpg"/>
+        </level>
+        <level tiledimagewidth="2000" tiledimageheight="1000">
+            <sphere url="1data/13/0/%v_%u.jpg"/>
+        </level>
+    </image>
+    <!--************** Hotspots and lensflares ****************************************************-->
+    <lensflare name="LENS0" set="DEFAULT" visible="true" ath="370.474" atv="-23.8123"/>
+    <hotspot name="spot8" onclick="mainloadpano(15.xml);" url="1data/graphics/spots/spot0.png" ath="-175.942" atv="-5.30578"/>
+    <hotspot name="spot9" onclick="mainloadpano(10.xml);" url="1data/graphics/spots/spot0.png" ath="-152.421" atv="-4.42726"/>
+    <hotspot name="spot10" onclick="mainloadpano(14.xml);" url="1data/graphics/spots/spot0.png" ath="-10.8378" atv="-5.30578"/>
+    <action name="hidepanospotsaction">
+		set(hotspot[spot8].visible, false);
+		set(hotspot[spot9].visible, false);
+		set(hotspot[spot10].visible, false);
+	</action>
+    <action name="showpanospotsaction">
+		set(hotspot[spot8].visible, true);
+		set(hotspot[spot9].visible, true);
+		set(hotspot[spot10].visible, true);
+	</action>
+    <!-- close all hotspots -->
+</krpano>
