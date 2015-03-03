@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- for xml compliance -->
+<krpano version="1.0.8.14">
+    <!-- actions to perform while loading -->
+    <events onxmlcomplete="onxmlcompleteaction();"/>
+    <action name="onxmlcompleteaction">
+		if(autorotate.enabled==false,set(plugin[autorotationOFF].visible,false); set(plugin[autorotationON].visible,true);,set(plugin[autorotationOFF].visible,true); set(plugin[autorotationON].visible,false););
+		firstloadcompleteaction();
+	</action>
+    <events onloadcomplete="onloadcompleteaction();"/>
+    <action name="onloadcompleteaction">
+		if(plugin[data].soundOn==false,stoppanosounds(),playpanosounds());
+	</action>
+    <action name="playpanosounds">
+		playbackgroundsound(%BASEDIR%/builddata/sounds/sound0.mp3,0,%1);
+	</action>
+    <action name="stoppanosounds">
+		stopbackgroundsound();
+	</action>
+    <action name="closepanoobjects">
+	</action>
+    <!--************** Панорама *******************************************************************-->
+    <!-- @File="build0.xml" @PanoName="1" @FilePath="L:/ВИРТУАЛЬНЫЕ ЭКСКУРСИИ 2015/Магазин игрушек/панорамы_магазин/1.jpg" -->
+    <panoview h="161.4" v="-1.49" fov="90"/>
+    <!-- view parameters -->
+    <view fisheye="0" limitview="range" hlookatmin="-180" hlookatmax="180" vlookatmin="-90" vlookatmax="90" maxpixelzoom="1.0" fovmax="90" fov="90" hlookat="161.4" vlookat="-1.49"/>
+    <action name="tweennormalview">
+		tween(view.hlookat, 161.4, 3, easeInOutQuad);
+		tween(view.vlookat, -1.49, 3, easeInOutQuad);
+		tween(view.fov    , 90, 3, easeInOutQuad );
+		tween(view.maxpixelzoom,1.0, 3, easeInOutQuad );
+		tween(view.fisheye, 0.0, 3, easeInOutQuad, WAIT);
+		set(display.flash10, on);
+		set(view.limitview , range);
+		set(view.vlookatmin, -90);
+		set(view.vlookatmax, 90);
+		set(view.hlookatmin, -180);
+		set(view.hlookatmax, 180);
+		set(view.maxpixelzoom, 1.0);
+		set(view.fovmax    , 90);
+	</action>
+    <autorotate horizon="-1.49" tofov="90" waittime="1" speed="5"/>
+    <!-- preview image -->
+    <preview url="builddata/build0/preview.jpg" type="CUBESTRIP" striporder="FRBLUD" details="16"/>
+    <!-- the pano itself -->
+    <image type="CUBE" multires="true" tilesize="955" baseindex="0">
+        <level tiledimagewidth="3819" tiledimageheight="3819">
+            <left url="builddata/build0/3/2/%v_%u.jpg"/>
+            <front url="builddata/build0/0/2/%v_%u.jpg"/>
+            <right url="builddata/build0/1/2/%v_%u.jpg"/>
+            <back url="builddata/build0/2/2/%v_%u.jpg"/>
+            <up url="builddata/build0/4/2/%v_%u.jpg"/>
+            <down url="builddata/build0/5/2/%v_%u.jpg"/>
+        </level>
+        <level tiledimagewidth="1909" tiledimageheight="1909">
+            <left url="builddata/build0/3/1/%v_%u.jpg"/>
+            <front url="builddata/build0/0/1/%v_%u.jpg"/>
+            <right url="builddata/build0/1/1/%v_%u.jpg"/>
+            <back url="builddata/build0/2/1/%v_%u.jpg"/>
+            <up url="builddata/build0/4/1/%v_%u.jpg"/>
+            <down url="builddata/build0/5/1/%v_%u.jpg"/>
+        </level>
+        <level tiledimagewidth="954" tiledimageheight="954">
+            <left url="builddata/build0/3/0/%v_%u.jpg"/>
+            <front url="builddata/build0/0/0/%v_%u.jpg"/>
+            <right url="builddata/build0/1/0/%v_%u.jpg"/>
+            <back url="builddata/build0/2/0/%v_%u.jpg"/>
+            <up url="builddata/build0/4/0/%v_%u.jpg"/>
+            <down url="builddata/build0/5/0/%v_%u.jpg"/>
+        </level>
+        <!-- mobile phone / iphone images -->
+        <mobile>
+            <left url="builddata/build0/3/mobile_face.jpg"/>
+            <front url="builddata/build0/0/mobile_face.jpg"/>
+            <right url="builddata/build0/1/mobile_face.jpg"/>
+            <back url="builddata/build0/2/mobile_face.jpg"/>
+            <up url="builddata/build0/4/mobile_face.jpg"/>
+            <down url="builddata/build0/5/mobile_face.jpg"/>
+        </mobile>
+        <!-- tablet pc / ipad images -->
+        <tablet>
+            <left url="builddata/build0/3/tablet_face.jpg"/>
+            <front url="builddata/build0/0/tablet_face.jpg"/>
+            <right url="builddata/build0/1/tablet_face.jpg"/>
+            <back url="builddata/build0/2/tablet_face.jpg"/>
+            <up url="builddata/build0/4/tablet_face.jpg"/>
+            <down url="builddata/build0/5/tablet_face.jpg"/>
+        </tablet>
+    </image>
+    <!--************** Hotspots and lensflares ****************************************************-->
+    <hotspot name="spot0" onclick="mainloadpano(build1.xml);" url="builddata/graphics/spots/spot0.png" crop="0|0|64|64" frame="0" lastframe="19" frameheight="64" framewidth="64" onloaded="set(stopSequence,false);animate(spot0,0.1);" ath="163.992" atv="1.30435"/>
+    <action name="hidepanospotsaction">
+		set(hotspot[spot0].visible, false);
+	</action>
+    <action name="showpanospotsaction">
+		set(hotspot[spot0].visible, true);
+	</action>
+    <!-- close all hotspots -->
+</krpano>
