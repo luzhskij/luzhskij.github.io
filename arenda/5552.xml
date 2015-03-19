@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- for xml compliance -->
+<krpano version="1.0.8.14">
+    <!-- actions to perform while loading -->
+    <events onxmlcomplete="onxmlcompleteaction();"/>
+    <action name="onxmlcompleteaction">
+		firstloadcompleteaction();
+	</action>
+    <action name="playpanosounds">
+		playbackgroundsound(none);
+	</action>
+    <action name="stoppanosounds">
+		stopbackgroundsound();
+	</action>
+    <action name="closepanoobjects">
+	</action>
+    <!--************** Панорама *******************************************************************-->
+    <!-- @File="5552.xml" @PanoName="3" @FilePath="L:/ВИРТУАЛЬНЫЕ ЭКСКУРСИИ 2015/квартира на Пионерской/3.jpg" -->
+    <panoview h="0" v="0" fov="90"/>
+    <!-- view parameters -->
+    <view fisheye="0" limitview="range" hlookatmin="-180" hlookatmax="180" vlookatmin="-90" vlookatmax="90" maxpixelzoom="1.0" fovmax="90" fov="90" hlookat="0" vlookat="0"/>
+    <autorotate horizon="0" tofov="90" waittime="1" speed="5"/>
+    <!-- preview image -->
+    <preview url="555data/5552/preview.jpg" type="CUBESTRIP" striporder="FRBLUD" details="16"/>
+    <!-- the pano itself -->
+    <image type="CUBE" multires="true" tilesize="957" baseindex="0">
+        <level tiledimagewidth="3826" tiledimageheight="3826">
+            <left url="555data/5552/3/2/%v_%u.jpg"/>
+            <front url="555data/5552/0/2/%v_%u.jpg"/>
+            <right url="555data/5552/1/2/%v_%u.jpg"/>
+            <back url="555data/5552/2/2/%v_%u.jpg"/>
+            <up url="555data/5552/4/2/%v_%u.jpg"/>
+            <down url="555data/5552/5/2/%v_%u.jpg"/>
+        </level>
+        <level tiledimagewidth="1913" tiledimageheight="1913">
+            <left url="555data/5552/3/1/%v_%u.jpg"/>
+            <front url="555data/5552/0/1/%v_%u.jpg"/>
+            <right url="555data/5552/1/1/%v_%u.jpg"/>
+            <back url="555data/5552/2/1/%v_%u.jpg"/>
+            <up url="555data/5552/4/1/%v_%u.jpg"/>
+            <down url="555data/5552/5/1/%v_%u.jpg"/>
+        </level>
+        <level tiledimagewidth="956" tiledimageheight="956">
+            <left url="555data/5552/3/0/%v_%u.jpg"/>
+            <front url="555data/5552/0/0/%v_%u.jpg"/>
+            <right url="555data/5552/1/0/%v_%u.jpg"/>
+            <back url="555data/5552/2/0/%v_%u.jpg"/>
+            <up url="555data/5552/4/0/%v_%u.jpg"/>
+            <down url="555data/5552/5/0/%v_%u.jpg"/>
+        </level>
+        <!-- mobile phone / iphone images -->
+        <mobile>
+            <left url="555data/5552/3/mobile_face.jpg"/>
+            <front url="555data/5552/0/mobile_face.jpg"/>
+            <right url="555data/5552/1/mobile_face.jpg"/>
+            <back url="555data/5552/2/mobile_face.jpg"/>
+            <up url="555data/5552/4/mobile_face.jpg"/>
+            <down url="555data/5552/5/mobile_face.jpg"/>
+        </mobile>
+        <!-- tablet pc / ipad images -->
+        <tablet>
+            <left url="555data/5552/3/tablet_face.jpg"/>
+            <front url="555data/5552/0/tablet_face.jpg"/>
+            <right url="555data/5552/1/tablet_face.jpg"/>
+            <back url="555data/5552/2/tablet_face.jpg"/>
+            <up url="555data/5552/4/tablet_face.jpg"/>
+            <down url="555data/5552/5/tablet_face.jpg"/>
+        </tablet>
+    </image>
+    <!--************** Hotspots and lensflares ****************************************************-->
+    <lensflare name="LENS0" set="DEFAULT" visible="true" ath="449.9" atv="-65.1448"/>
+    <lensflare name="LENS1" set="DEFAULT" visible="true" ath="344.182" atv="-63.1403"/>
+    <lensflare name="LENS2" set="DEFAULT" visible="true" ath="227.253" atv="-68.3519"/>
+    <hotspot name="spot2" onclick="mainloadpano(5553.xml);" url="555data/graphics/spots/spot1.png" crop="0|0|64|64" frame="0" lastframe="19" frameheight="64" framewidth="64" onloaded="set(stopSequence,false);animate(spot2,0.1);" onhover="showtext(Прихожая);" ath="-69.8776" atv="10.6236"/>
+    <hotspot name="spot3" onclick="mainloadpano(5551.xml);" url="555data/graphics/spots/spot1.png" crop="0|0|64|64" frame="0" lastframe="19" frameheight="64" framewidth="64" onloaded="set(stopSequence,false);animate(spot3,0.1);" onhover="showtext(Балкон);" ath="33.8376" atv="7.81737"/>
+    <hotspot name="spot4" onclick="closeallobjects();set(plugin[spot4object].visible,true);tween(plugin[spot4object].alpha, 1);" url="555data/graphics/spots/spot2.png" crop="0|0|64|64" frame="0" lastframe="19" frameheight="64" framewidth="64" onloaded="set(stopSequence,false);animate(spot4,0.1);" onhover="showtext(Вид мз окна);" ath="-167.586" atv="5.81292"/>
+    <plugin name="spot4object" visible="false" url="555data/graphics/spots/object0.jpg" align="center" alpha="0" onclick="closespot4object();"/>
+    <action name="closespot4object">
+		if(plugin[spot4object].visible,
+		tween(plugin[spot4object].alpha, 0);
+		delayedcall(0.5,set(plugin[spot4object].visible,false));
+		);
+	</action>
+    <action name="hidepanospotsaction">
+		set(hotspot[spot2].visible, false);
+		set(hotspot[spot3].visible, false);
+		set(hotspot[spot4].visible, false);
+	</action>
+    <action name="showpanospotsaction">
+		set(hotspot[spot2].visible, true);
+		set(hotspot[spot3].visible, true);
+		set(hotspot[spot4].visible, true);
+	</action>
+    <!-- close all hotspots -->
+    <action name="closeallobjects">
+		closespot4object();
+	</action>
+</krpano>
