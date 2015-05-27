@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- for xml compliance -->
+<krpano version="1.0.8.14">
+    <!-- actions to perform while loading -->
+    <events onxmlcomplete="onxmlcompleteaction();"/>
+    <action name="onxmlcompleteaction">
+		firstloadcompleteaction();
+	</action>
+    <action name="playpanosounds">
+		playbackgroundsound(none);
+	</action>
+    <action name="stoppanosounds">
+		stopbackgroundsound();
+	</action>
+    <action name="closepanoobjects">
+	</action>
+    <!--************** Панорама *******************************************************************-->
+    <!-- @File="virtualtour4.xml" @PanoName="кухня" @FilePath="J:/квартира Коменд/панорамы/кухня.jpg" -->
+    <panoview h="0" v="0" fov="90"/>
+    <!-- view parameters -->
+    <view fisheye="0" limitview="range" hlookatmin="-180" hlookatmax="180" vlookatmin="-90" vlookatmax="90" maxpixelzoom="1.0" fovmax="90" fov="90" hlookat="0" vlookat="0"/>
+    <autorotate horizon="0" tofov="90" waittime="1" speed="5"/>
+    <!-- preview image -->
+    <preview url="virtualtourdata/virtualtour4/preview.jpg" type="CUBESTRIP" striporder="FRBLUD" details="16"/>
+    <!-- the pano itself -->
+    <image type="CUBE" multires="true" tilesize="961" baseindex="0">
+        <level tiledimagewidth="3844" tiledimageheight="3844">
+            <left url="virtualtourdata/virtualtour4/3/2/%v_%u.jpg"/>
+            <front url="virtualtourdata/virtualtour4/0/2/%v_%u.jpg"/>
+            <right url="virtualtourdata/virtualtour4/1/2/%v_%u.jpg"/>
+            <back url="virtualtourdata/virtualtour4/2/2/%v_%u.jpg"/>
+            <up url="virtualtourdata/virtualtour4/4/2/%v_%u.jpg"/>
+            <down url="virtualtourdata/virtualtour4/5/2/%v_%u.jpg"/>
+        </level>
+        <level tiledimagewidth="1922" tiledimageheight="1922">
+            <left url="virtualtourdata/virtualtour4/3/1/%v_%u.jpg"/>
+            <front url="virtualtourdata/virtualtour4/0/1/%v_%u.jpg"/>
+            <right url="virtualtourdata/virtualtour4/1/1/%v_%u.jpg"/>
+            <back url="virtualtourdata/virtualtour4/2/1/%v_%u.jpg"/>
+            <up url="virtualtourdata/virtualtour4/4/1/%v_%u.jpg"/>
+            <down url="virtualtourdata/virtualtour4/5/1/%v_%u.jpg"/>
+        </level>
+        <level tiledimagewidth="961" tiledimageheight="961">
+            <left url="virtualtourdata/virtualtour4/3/0/%v_%u.jpg"/>
+            <front url="virtualtourdata/virtualtour4/0/0/%v_%u.jpg"/>
+            <right url="virtualtourdata/virtualtour4/1/0/%v_%u.jpg"/>
+            <back url="virtualtourdata/virtualtour4/2/0/%v_%u.jpg"/>
+            <up url="virtualtourdata/virtualtour4/4/0/%v_%u.jpg"/>
+            <down url="virtualtourdata/virtualtour4/5/0/%v_%u.jpg"/>
+        </level>
+    </image>
+    <!--************** Hotspots and lensflares ****************************************************-->
+    <lensflare name="LENS0" set="DEFAULT" visible="true" ath="394.238" atv="-67.951"/>
+    <hotspot name="spot10" hview="89.2" vview="2.8" fovview="90" hcenter="145.161" vcenter="8.61915" onclick="mainloadpano(virtualtour5.xml);lookat(get(hview),get(vview),get(fovview));" url="virtualtourdata/graphics/spots/spot0.png" crop="0|0|64|64" frame="0" lastframe="19" frameheight="64" framewidth="64" onloaded="set(stopSequence,false);animate(spot10,0.1);" ath="145.161" atv="8.61915"/>
+    <action name="hidepanospotsaction">
+		set(hotspot[spot10].visible, false);
+	</action>
+    <action name="showpanospotsaction">
+		set(hotspot[spot10].visible, true);
+	</action>
+    <!-- close all hotspots -->
+</krpano>

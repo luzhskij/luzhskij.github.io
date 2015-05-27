@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- for xml compliance -->
+<krpano version="1.0.8.14">
+    <!-- actions to perform while loading -->
+    <events onxmlcomplete="onxmlcompleteaction();"/>
+    <action name="onxmlcompleteaction">
+		firstloadcompleteaction();
+	</action>
+    <action name="playpanosounds">
+		playbackgroundsound(none);
+	</action>
+    <action name="stoppanosounds">
+		stopbackgroundsound();
+	</action>
+    <action name="closepanoobjects">
+	</action>
+    <!--************** Панорама *******************************************************************-->
+    <!-- @File="virtualtour1.xml" @PanoName="зал" @FilePath="J:/квартира Коменд/панорамы/зал.jpg" -->
+    <panoview h="0" v="0" fov="90"/>
+    <!-- view parameters -->
+    <view fisheye="0" limitview="range" hlookatmin="-180" hlookatmax="180" vlookatmin="-90" vlookatmax="90" maxpixelzoom="1.0" fovmax="90" fov="90" hlookat="0" vlookat="0"/>
+    <autorotate horizon="0" tofov="90" waittime="1" speed="5"/>
+    <!-- preview image -->
+    <preview url="virtualtourdata/virtualtour1/preview.jpg" type="CUBESTRIP" striporder="FRBLUD" details="16"/>
+    <!-- the pano itself -->
+    <image type="CUBE" multires="true" tilesize="960" baseindex="0">
+        <level tiledimagewidth="3837" tiledimageheight="3837">
+            <left url="virtualtourdata/virtualtour1/3/2/%v_%u.jpg"/>
+            <front url="virtualtourdata/virtualtour1/0/2/%v_%u.jpg"/>
+            <right url="virtualtourdata/virtualtour1/1/2/%v_%u.jpg"/>
+            <back url="virtualtourdata/virtualtour1/2/2/%v_%u.jpg"/>
+            <up url="virtualtourdata/virtualtour1/4/2/%v_%u.jpg"/>
+            <down url="virtualtourdata/virtualtour1/5/2/%v_%u.jpg"/>
+        </level>
+        <level tiledimagewidth="1918" tiledimageheight="1918">
+            <left url="virtualtourdata/virtualtour1/3/1/%v_%u.jpg"/>
+            <front url="virtualtourdata/virtualtour1/0/1/%v_%u.jpg"/>
+            <right url="virtualtourdata/virtualtour1/1/1/%v_%u.jpg"/>
+            <back url="virtualtourdata/virtualtour1/2/1/%v_%u.jpg"/>
+            <up url="virtualtourdata/virtualtour1/4/1/%v_%u.jpg"/>
+            <down url="virtualtourdata/virtualtour1/5/1/%v_%u.jpg"/>
+        </level>
+        <level tiledimagewidth="959" tiledimageheight="959">
+            <left url="virtualtourdata/virtualtour1/3/0/%v_%u.jpg"/>
+            <front url="virtualtourdata/virtualtour1/0/0/%v_%u.jpg"/>
+            <right url="virtualtourdata/virtualtour1/1/0/%v_%u.jpg"/>
+            <back url="virtualtourdata/virtualtour1/2/0/%v_%u.jpg"/>
+            <up url="virtualtourdata/virtualtour1/4/0/%v_%u.jpg"/>
+            <down url="virtualtourdata/virtualtour1/5/0/%v_%u.jpg"/>
+        </level>
+    </image>
+    <!--************** Hotspots and lensflares ****************************************************-->
+    <lensflare name="LENS0" set="DEFAULT" visible="true" ath="253.281" atv="-68.3519"/>
+    <hotspot name="spot1" hview="-178.8" vview="6.2" fovview="90" hcenter="-125.139" vcenter="9.82183" onclick="mainloadpano(virtualtour5.xml);lookat(get(hview),get(vview),get(fovview));" url="virtualtourdata/graphics/spots/spot0.png" crop="0|0|64|64" frame="0" lastframe="19" frameheight="64" framewidth="64" onloaded="set(stopSequence,false);animate(spot1,0.1);" ath="-125.139" atv="9.82183"/>
+    <hotspot name="spot2" onclick="closeglobalobjects();closeallobjects();set(plugin[spot2object].visible,true);tween(plugin[spot2object].alpha, 1);" url="virtualtourdata/graphics/spots/spot1.png" crop="0|0|64|64" frame="0" lastframe="19" frameheight="64" framewidth="64" onloaded="set(stopSequence,false);animate(spot2,0.1);" onhover="showtext(вид с балкона);" ath="-9.8109" atv="5.41203"/>
+    <plugin name="spot2object" visible="false" url="virtualtourdata/graphics/spots/object0.JPG" align="center" alpha="0" onclick="closespot2object();"/>
+    <action name="closespot2object">
+		if(plugin[spot2object].visible,
+		closeglobalobjects();
+		tween(plugin[spot2object].alpha, 0);
+		delayedcall(0.5,set(plugin[spot2object].visible,false));
+		);
+	</action>
+    <action name="hidepanospotsaction">
+		set(hotspot[spot1].visible, false);
+		set(hotspot[spot2].visible, false);
+	</action>
+    <action name="showpanospotsaction">
+		set(hotspot[spot1].visible, true);
+		set(hotspot[spot2].visible, true);
+	</action>
+    <!-- close all hotspots -->
+    <action name="closeallobjects">
+		closespot2object();
+	</action>
+</krpano>
